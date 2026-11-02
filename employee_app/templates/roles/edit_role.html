@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Role | Employee Management System
+{% endblock %}
+
+{% block content %}
+
+<div class="edit-page">
+
+    <div class="container">
+
+        <!-- Page Header -->
+        <div class="page-header">
+
+            <h1>✏️ Edit Role</h1>
+
+            <p>
+                Update role information.
+            </p>
+
+        </div>
+
+
+        <!-- Form Card -->
+        <div class="form-card">
+
+            <!-- Form Heading -->
+            <div class="form-heading">
+
+                <h4>
+                    Role Information
+                </h4>
+
+                <p>
+                    Update the details of this role.
+                </p>
+
+            </div>
+
+
+            <!-- Form Body -->
+            <div class="form-body">
+
+                <form method="POST" novalidate>
+
+    {% csrf_token %}
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Role Name <span class="required-star">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="name"
+            class="form-control {% if errors.name %}is-invalid{% endif %}"
+            value="{% if form_data %}{{ form_data.name }}{% else %}{{ role.name }}{% endif %}"
+            placeholder="Enter role name"
+        >
+
+        {% if errors.name %}
+            <div class="invalid-feedback">
+                {{ errors.name }}
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="mt-3">
+
+        <button
+            type="submit"
+            class="btn-update"
+        >
+
+            <i class="fa-solid fa-check"></i>
+
+            Update Role
+
+        </button>
+
+        <a
+            href="{% url 'role_index' %}"
+            class="btn-cancel ms-2"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+            Cancel
+
+        </a>
+
+    </div>
+
+</form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add Role | Employee Management System
+{% endblock %}
+
+
+{% block content %}
+
+<div class="create-page">
+
+    <div class="container">
+
+        <!-- Page Header -->
+
+        <div class="page-header">
+
+            <h1>
+                <i class="fa-solid fa-user-tag"></i>
+                Add Role
+            </h1>
+
+            <p>
+                Create a new role.
+            </p>
+
+        </div>
+
+
+        <!-- Form Card -->
+
+        <div class="form-card">
+
+
+            <!-- Form Heading -->
+
+            <div class="form-heading">
+
+                <h4>
+                    Role Information
+                </h4>
+
+                <p>
+                    Enter the details of the new role.
+                </p>
+
+            </div>
+
+
+            <!-- Form Body -->
+
+            <div class="form-body">
+
+                <form method="POST" novalidate>
+
+    {% csrf_token %}
+
+    <div class="mb-3">
+
+        <label class="form-label">
+            Role Name <span class="required-star">*</span>
+        </label>
+
+        <input
+            type="text"
+            name="name"
+            class="form-control {% if errors.name %}is-invalid{% endif %}"
+            placeholder="Enter role name"
+            value="{{ form_data.name|default:'' }}"
+        >
+
+        {% if errors.name %}
+            <div class="invalid-feedback">
+                {{ errors.name }}
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div class="mt-3">
+
+        <button
+            type="submit"
+            class="btn-add"
+        >
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Role
+
+        </button>
+
+        <a
+            href="{% url 'role_index' %}"
+            class="btn-cancel ms-2"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+            Cancel
+
+        </a>
+
+    </div>
+
+</form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

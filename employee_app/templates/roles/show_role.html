@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Role Details | Employee Management System
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <!-- Page Header -->
+    <div class="page-header">
+
+        <h1>
+            <i class="fa-solid fa-user-tag"></i>
+            Role Details
+        </h1>
+
+        <p>
+            View complete role information.
+        </p>
+
+    </div>
+
+
+    <!-- Role Details Card -->
+    <div class="detail-card">
+
+        <!-- Header -->
+        <div class="detail-header">
+
+            <div class="employee-icon">
+                <i class="fa-solid fa-user-tag"></i>
+            </div>
+
+            <div>
+
+                <h4>
+                    {{ role.name }}
+                </h4>
+
+                <p>
+                    Role ID: #{{ role.id }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Body -->
+        <div class="detail-body">
+
+            <div class="row">
+
+                <!-- Role Name -->
+                <div class="col-md-6">
+
+                    <div class="detail-item">
+
+                        <div class="detail-label">
+                            Role Name
+                        </div>
+
+                        <div class="detail-value">
+
+                            <span class="role-badge">
+                                {{ role.name }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Role ID -->
+                <div class="col-md-6">
+
+                    <div class="detail-item">
+
+                        <div class="detail-label">
+                            Role ID
+                        </div>
+
+                        <div class="detail-value">
+                            #{{ role.id }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Back Button -->
+            <div class="mt-4">
+
+                <a
+                    href="{% url 'role_index' %}"
+                    class="back-btn"
+                >
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Roles
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

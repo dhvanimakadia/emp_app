@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dashboard | Employee Management System
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <div class="page-header mb-4">
+        <h2>Dashboard</h2>
+        <p>Welcome back, {{ request.user.username }}!</p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4 mb-4">
+            <div class="card p-4">
+                <h5>Employees</h5>
+                <p>Manage employee records.</p>
+
+                <a href="{% url 'index' %}" class="btn btn-primary">
+                    View Employees
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card p-4">
+                <h5>Departments</h5>
+                <p>Manage departments.</p>
+
+                <a href="{% url 'department_index' %}" class="btn btn-primary">
+                    View Departments
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card p-4">
+                <h5>Roles</h5>
+                <p>Manage employee roles.</p>
+
+                <a href="{% url 'role_index' %}" class="btn btn-primary">
+                    View Roles
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

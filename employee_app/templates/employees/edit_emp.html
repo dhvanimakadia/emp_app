@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Employee | Employee Management System
+{% endblock %}
+
+{% block content %}
+
+<div class="edit-page">
+
+    <div class="container">
+
+        <div class="page-header">
+
+            <h1>✏️ Edit Employee</h1>
+
+            <p>
+                Update employee information.
+            </p>
+
+        </div>
+
+        <div class="form-card">
+
+            <div class="form-heading">
+
+                <h4>
+                    Employee Information
+                </h4>
+
+                <p>
+                    Update the details of this employee.
+                </p>
+
+            </div>
+
+            <div class="form-body">
+
+                <form method="POST" novalidate>
+
+                    {% csrf_token %}
+
+                    <div class="row">
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                First Name <span class="required-star">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                name="first_name"
+                                class="form-control {% if errors.first_name %}is-invalid{% endif %}"
+                                value="{% if form_data %}{{ form_data.first_name }}{% else %}{{ employee.first_name }}{% endif %}"
+                                placeholder="Enter first name"
+                            >
+
+                            {% if errors.first_name %}
+                                <div class="invalid-feedback">
+                                    {{ errors.first_name }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Last Name <span class="required-star">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                name="last_name"
+                                class="form-control {% if errors.last_name %}is-invalid{% endif %}"
+                                value="{% if form_data %}{{ form_data.last_name }}{% else %}{{ employee.last_name }}{% endif %}"
+                                placeholder="Enter last name"
+                            >
+
+                            {% if errors.last_name %}
+                                <div class="invalid-feedback">
+                                    {{ errors.last_name }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Phone Number <span class="required-star">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                name="phone"
+                                class="form-control {% if errors.phone %}is-invalid{% endif %}"
+                                value="{% if form_data %}{{ form_data.phone }}{% else %}{{ employee.phone }}{% endif %}"
+                                placeholder="Enter phone number"
+                                pattern="[0-9]+"
+                            >
+
+                            {% if errors.phone %}
+                                <div class="invalid-feedback">
+                                    {{ errors.phone }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Salary <span class="required-star">*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                name="salary"
+                                class="form-control {% if errors.salary %}is-invalid{% endif %}"
+                                value="{% if form_data %}{{ form_data.salary }}{% else %}{{ employee.salary }}{% endif %}"
+                                placeholder="Enter salary"
+                                min="0"
+                            >
+
+                            {% if errors.salary %}
+                                <div class="invalid-feedback">
+                                    {{ errors.salary }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Bonus <span class="required-star">*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                name="bonus"
+                                class="form-control {% if errors.bonus %}is-invalid{% endif %}"
+                                value="{% if form_data %}{{ form_data.bonus }}{% else %}{{ employee.bonus }}{% endif %}"
+                                placeholder="Enter bonus"
+                                min="0"
+                            >
+
+                            {% if errors.bonus %}
+                                <div class="invalid-feedback">
+                                    {{ errors.bonus }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Department <span class="required-star">*</span>
+                            </label>
+
+                            <select
+                                name="dept"
+                                class="form-select {% if errors.dept %}is-invalid{% endif %}"
+                            >
+
+                                {% for department in departments %}
+
+                                    <option
+                                        value="{{ department.id }}"
+                                        {% if form_data %}
+                                            {% if form_data.dept == department.id|stringformat:"s" %}selected{% endif %}
+                                        {% else %}
+                                            {% if employee.dept_id == department.id %}selected{% endif %}
+                                        {% endif %}
+                                    >
+                                        {{ department.name }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                            {% if errors.dept %}
+                                <div class="invalid-feedback">
+                                    {{ errors.dept }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <label class="form-label">
+                                Role <span class="required-star">*</span>
+                            </label>
+
+                            <select
+                                name="role"
+                                class="form-select {% if errors.role %}is-invalid{% endif %}"
+                            >
+
+                                {% for role in roles %}
+
+                                    <option
+                                        value="{{ role.id }}"
+                                        {% if form_data %}
+                                            {% if form_data.role == role.id|stringformat:"s" %}selected{% endif %}
+                                        {% else %}
+                                            {% if employee.role_id == role.id %}selected{% endif %}
+                                        {% endif %}
+                                    >
+                                        {{ role.name }}
+                                    </option>
+
+                                {% endfor %}
+
+                            </select>
+
+                            {% if errors.role %}
+                                <div class="invalid-feedback">
+                                    {{ errors.role }}
+                                </div>
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                    <div class="mt-3">
+
+                        <button
+                            type="submit"
+                            class="btn-update"
+                        >
+
+                            <i class="fa-solid fa-check"></i>
+
+                            Update Employee
+
+                        </button>
+
+                        <a
+                            href="{% url 'index' %}"
+                            class="btn-cancel ms-2"
+                        >
+
+                            <i class="fa-solid fa-xmark"></i>
+
+                            Cancel
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

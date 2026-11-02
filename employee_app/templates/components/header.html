@@ -1,0 +1,47 @@
+<header class="top-header">
+
+    <div class="header-left">
+
+        <button
+            class="sidebar-toggle"
+            id="sidebarToggle"
+            type="button"
+        >
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        
+
+    </div>
+
+
+    <div class="header-right">
+
+        <div class="user-profile">
+
+            <div class="user-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div class="user-info">
+                <strong>{{ request.user.username }}</strong>
+                <small>Administrator</small>
+            </div>
+
+        </div>
+
+
+        <div class="header-divider"></div>
+
+
+        <a
+            href="{% url 'logout' %}"
+            class="logout-btn"
+            title="Logout"
+        >
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </a>
+
+    </div>
+
+</header>

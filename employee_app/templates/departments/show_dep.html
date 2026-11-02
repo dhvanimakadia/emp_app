@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Department Details | Employee Management System
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<!-- Page Header -->
+
+<div class="page-header">
+
+    <h1>🏢 Department Details</h1>
+
+    <p>
+        View complete department information.
+    </p>
+
+</div>
+
+
+<!-- Department Card -->
+
+<div class="detail-card">
+
+    <!-- Card Header -->
+
+    <div class="detail-header">
+
+        <div class="employee-icon">
+
+            <i class="fa-solid fa-building"></i>
+
+        </div>
+
+
+        <div>
+
+            <h4>
+                {{ department.name }}
+            </h4>
+
+            <p>
+                Department ID: #{{ department.id }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Card Body -->
+
+    <div class="detail-body">
+
+        <div class="row">
+
+            <!-- Department Name -->
+
+            <div class="col-md-6">
+
+                <div class="detail-item">
+
+                    <div class="detail-label">
+                        Department Name
+                    </div>
+
+                    <div class="detail-value">
+                        {{ department.name }}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Location -->
+
+            <div class="col-md-6">
+
+                <div class="detail-item">
+
+                    <div class="detail-label">
+                        Location
+                    </div>
+
+                    <div class="detail-value">
+
+                        <span class="department-badge">
+                            {{ department.location }}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Back Button -->
+
+        <div class="mt-4">
+
+            <a
+                href="{% url 'department_index' %}"
+                class="back-btn"
+            >
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Departments
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+
+{% load static %}
+
+<div class="sidebar">
+
+    <!-- BRAND -->
+    <div class="sidebar-brand">
+
+        <a href="{% url 'index' %}" class="brand-link">
+
+            <img src="{% static 'images/project_logo.png' %}"
+                 alt="Employee Management System"
+                 class="project-logo">
+
+            <span>Employee Management System</span>
+
+        </a>
+
+    </div>
+
+
+    <!-- MENU -->
+    <div class="sidebar-menu">
+
+        <a href="{% url 'dashboard' %}" class="sidebar-link">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+        </a>
+
+        {% if request.user.userprofile.role.name|lower == 'admin' %}
+
+            <a href="{% url 'user_index' %}" class="sidebar-link">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>Users</span>
+            </a>
+
+            <a href="{% url 'role_index' %}" class="sidebar-link">
+                <i class="fa-solid fa-user-tag"></i>
+                <span>Roles</span>
+            </a>
+
+        {% endif %}
+
+        <a href="{% url 'department_index' %}" class="sidebar-link">
+            <i class="fa-solid fa-building"></i>
+            <span>Departments</span>
+        </a>
+
+        <a href="{% url 'index' %}" class="sidebar-link">
+            <i class="fa-solid fa-users"></i>
+            <span>Employees</span>
+        </a>
+
+    </div>
+
+</div>

@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Department | Employee Management System
+{% endblock %}
+
+{% block content %}
+
+<div class="edit-page">
+
+
+<div class="container">
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <h1>✏️ Edit Department</h1>
+
+        <p>
+            Update department information.
+        </p>
+
+    </div>
+
+
+    <!-- Form Card -->
+
+    <div class="form-card">
+
+        <!-- Form Heading -->
+
+        <div class="form-heading">
+
+            <h4>
+                Department Information
+            </h4>
+
+            <p>
+                Update the details of this department.
+            </p>
+
+        </div>
+
+
+        <!-- Form Body -->
+
+        <div class="form-body">
+
+            <form method="POST" novalidate>
+
+    {% csrf_token %}
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+                Department Name <span class="required-star">*</span>
+            </label>
+
+            <input
+                type="text"
+                name="name"
+                class="form-control {% if errors.name %}is-invalid{% endif %}"
+                value="{% if form_data %}{{ form_data.name }}{% else %}{{ department.name }}{% endif %}"
+                placeholder="Enter department name"
+            >
+
+            {% if errors.name %}
+                <div class="invalid-feedback">
+                    {{ errors.name }}
+                </div>
+            {% endif %}
+
+        </div>
+
+        <div class="col-md-6 mb-3">
+
+            <label class="form-label">
+                Location <span class="required-star">*</span>
+            </label>
+
+            <input
+                type="text"
+                name="location"
+                class="form-control {% if errors.location %}is-invalid{% endif %}"
+                value="{% if form_data %}{{ form_data.location }}{% else %}{{ department.location }}{% endif %}"
+                placeholder="Enter department location"
+            >
+
+            {% if errors.location %}
+                <div class="invalid-feedback">
+                    {{ errors.location }}
+                </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <div class="mt-3">
+
+        <button
+            type="submit"
+            class="btn-update"
+        >
+
+            <i class="fa-solid fa-check"></i>
+
+            Update Department
+
+        </button>
+
+        <a
+            href="{% url 'department_index' %}"
+            class="btn-cancel ms-2"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+            Cancel
+
+        </a>
+
+    </div>
+
+</form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+{% endblock %}

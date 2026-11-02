@@ -1,0 +1,250 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Employee Details | Employee Management System
+{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <!-- Page Header -->
+
+    <div class="page-header">
+
+        <h1>👤 Employee Details</h1>
+
+        <p>
+            View complete employee information.
+        </p>
+
+    </div>
+
+
+    <!-- Employee Card -->
+
+    <div class="detail-card">
+
+
+        <!-- Card Header -->
+
+        <div class="detail-header">
+
+            <div class="employee-icon">
+
+                <i class="fa-solid fa-user"></i>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    {{ employee.first_name }}
+                    {{ employee.last_name }}
+                </h4>
+
+                <p>
+                    Employee ID: #{{ employee.id }}
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Card Body -->
+
+        <div class="detail-body">
+
+            <div class="row">
+
+
+                <!-- First Name -->
+
+                <div class="col-md-6">
+
+                    <div class="detail-item">
+
+                        <div class="detail-label">
+                            First Name
+                        </div>
+
+                        <div class="detail-value">
+                            {{ employee.first_name }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Last Name -->
+
+                <div class="col-md-6">
+
+                    <div class="detail-item">
+
+                        <div class="detail-label">
+                            Last Name
+                        </div>
+
+                        <div class="detail-value">
+                            {{ employee.last_name }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="col-md-6">
+
+                    <div class="detail-item">
+
+                        <div class="detail-label">
+                            Phone Number
+                        </div>
+
+                        <div class="detail-value">
+                            {{ employee.phone }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Department -->
+
+                <div class="col-md-6">
+
+                    <div class="detail-item">
+
+                        <div class="detail-label">
+                            Department
+                        </div>
+
+                        <div class="detail-value">
+
+                            <span class="department-badge">
+                                {{ employee.dept.name }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Role -->
+
+                <div class="col-md-6">
+
+                    <div class="detail-item">
+
+                        <div class="detail-label">
+                            Role
+                        </div>
+
+                        <div class="detail-value">
+
+                            <span class="role-badge">
+                                {{ employee.role.name }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Hire Date -->
+
+                <div class="col-md-6">
+
+                    <div class="detail-item">
+
+                        <div class="detail-label">
+                            Hire Date
+                        </div>
+
+                        <div class="detail-value">
+                            {{ employee.hire_date|date:"d M Y" }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Salary -->
+
+                <div class="col-md-6">
+
+                    <div class="detail-item">
+
+                        <div class="detail-label">
+                            Salary
+                        </div>
+
+                        <div class="detail-value">
+                            ₹ {{ employee.salary }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Bonus -->
+
+                <div class="col-md-6">
+
+                    <div class="detail-item">
+
+                        <div class="detail-label">
+                            Bonus
+                        </div>
+
+                        <div class="detail-value">
+                            ₹ {{ employee.bonus }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Back Button -->
+
+            <div class="mt-4">
+
+                <a
+                    href="{% url 'index' %}"
+                    class="back-btn"
+                >
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Back to Employees
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
